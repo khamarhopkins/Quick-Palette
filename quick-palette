@@ -1,0 +1,247 @@
+int randomR = 255;
+int randomG = 0;    
+int randomB = 255;
+
+int randomR2 = 255;
+int randomG2 = 255;
+int randomB2 = 0;
+
+int randomR3 = 0;
+int randomG3 = 255;
+int randomB3 = 255;
+
+int randomR4 = 255;
+int randomG4 = 0;
+int randomB4 = 0;
+
+int randomR5 = 0;
+int randomG5 = 255;
+int randomB5 = 0;
+
+PImage img1;
+
+
+void setup() {
+  size(1280, 720);
+  frameRate(30);   
+  img1 = loadImage("quick-palette-logo.png");
+}
+
+void draw() {
+  background(0);
+  fill(randomR, randomG, randomB);
+  rect(0, 0, 256, height);     
+  
+  fill(randomR2, randomG2, randomB2);
+  rect(256, 0, 256, height);
+  
+  fill(randomR3, randomG3, randomB3);
+  rect(512, 0, 256, height);
+  
+  fill(randomR4, randomG4, randomB4);
+  rect(768, 0, 256, height);
+  
+  fill(randomR5, randomG5, randomB5);
+  rect(1024, 0, 256, height);
+  
+  image (img1, 540, 640, 200, 40);
+}
+
+void mousePressed() {    //LIGHTEN
+  if ((mouseButton == LEFT) && (mouseX > 0 && mouseX < 256) && (mouseY > 0 && mouseY < 720)){
+    randomR += 20;
+    randomG += 20;
+    randomB += 20;
+  } 
+  
+  else if ((mouseButton == LEFT) && (mouseX > 256 && mouseX < 512) && (mouseY > 0 && mouseY < 720)){
+    randomR2 += 20;
+    randomG2 += 20;
+    randomB2 += 20;
+  } 
+  
+  else if ((mouseButton == LEFT) && (mouseX > 512 && mouseX < 768) && (mouseY > 0 && mouseY < 720)){
+    randomR3 += 20;
+    randomG3 += 20;
+    randomB3 += 20;
+  } 
+  
+  else if ((mouseButton == LEFT) && (mouseX > 768 && mouseX < 1024) && (mouseY > 0 && mouseY < 720)){
+    randomR4 += 20;
+    randomG4 += 20;
+    randomB4 += 20;  
+  } 
+    
+  else if ((mouseButton == LEFT) && (mouseX > 1024 && mouseX < 1280) && (mouseY > 0 && mouseY < 720)){
+    randomR5 += 20;
+    randomG5 += 20;
+    randomB5 += 20;
+  }
+    
+    //DARKEN
+ 
+   else if ((mouseButton == RIGHT) && (mouseX > 0 && mouseX < 256) && (mouseY > 0 && mouseY < 720)){
+    randomR -= 20;
+    randomG -= 20;
+    randomB -= 20;
+  } 
+  
+  else if ((mouseButton == RIGHT) && (mouseX > 256 && mouseX < 512) && (mouseY > 0 && mouseY < 720)){
+    randomR2 -= 20;
+    randomG2 -= 20;
+    randomB2 -= 20;
+  } 
+  
+  else if ((mouseButton == RIGHT) && (mouseX > 512 && mouseX < 768) && (mouseY > 0 && mouseY < 720)){
+    randomR3 -= 20;
+    randomG3 -= 20;
+    randomB3 -= 20;
+  } 
+  
+  else if ((mouseButton == RIGHT) && (mouseX > 768 && mouseX < 1024) && (mouseY > 0 && mouseY < 720)){
+    randomR4 -= 20;
+    randomG4 -= 20;
+    randomB4 -= 20;
+  }
+  
+  else if ((mouseButton == RIGHT) && (mouseX > 1024 && mouseX < 1280) && (mouseY > 0 && mouseY < 720)){
+    randomR5 -= 20;
+    randomG5 -= 20;
+    randomB5 -= 20;
+  }
+  
+}
+
+
+
+  void keyPressed() {            
+    int lottery = (int)random(1, 5);   
+    if (lottery == 1) {            
+      randomR = (int)random(256);  
+      randomG = (int)random(256);  
+      randomB = (int)random(256);
+      
+      float adjust = 0.75;          
+      
+      int monochrome = (int)(random(-256, 256) * adjust);  
+      randomR2 = randomR + monochrome;
+      randomG2 = randomG + monochrome;
+      randomB2 = randomB + monochrome;
+      
+      int monochrome2 = (int)(random(-256, 256) * adjust);  
+      randomR3 = randomR + monochrome2;
+      randomG3 = randomG + monochrome2;
+      randomB3 = randomB + monochrome2;
+      
+      int monochrome3 = (int)(random(-256, 256) * adjust);
+      randomR4 = randomR + monochrome3;
+      randomG4 = randomG + monochrome3;
+      randomB4 = randomB + monochrome3;
+      
+      int monochrome4 = (int)(random(-256, 256) * adjust);
+      randomR5 = randomR + monochrome4;
+      randomG5 = randomG + monochrome4;
+      randomB5 = randomB + monochrome4;
+      
+    } 
+    
+    else if (lottery == 2) {                   
+      randomR = (int)random(256);                
+      randomG = (int)random(256);  
+      randomB = (int)random(256); 
+      
+      randomR2 = (randomR - 255) * (-1);        
+      randomG2 = (randomG - 255) * (-1);
+      randomB2 = (randomB - 255) * (-1);
+      
+      int complimentary = (int)random(-150, 150);  
+      
+      randomR3 = ((randomR - 255) * (-1) - complimentary);
+      randomG3 = ((randomG - 255) * (-1) - complimentary);
+      randomB3 = ((randomB - 255) * (-1) - complimentary);
+      
+      int complimentary2 = (int)random(-150, 150);  
+      
+      randomR4 = randomR + complimentary2;
+      randomG4 = randomG + complimentary2;
+      randomB4 = randomB + complimentary2; 
+      
+      randomR5 = ((randomR - 255) * (-1) - complimentary2);
+      randomG5 = ((randomG - 255) * (-1) - complimentary2);
+      randomB5 = ((randomB - 255) * (-1) - complimentary2);
+      
+    } 
+    
+    else {                                           
+      int randomBright = (int)random(1, 6);  
+      
+      if (randomBright <=2) {  
+        randomR = 0;                                  
+        randomG = (int)random(20, 60);               
+        randomB = (int)random(256);
+        
+        randomR2 = randomR;
+        randomG2 = randomG + 60;                     
+        randomB2 = randomB;
+        
+        randomR3 = randomR;
+        randomG3 = randomG + 120;
+        randomB3 = randomB;
+        
+        randomR4 = randomR;
+        randomG4 = randomG + 180;
+        randomB4 = randomB;
+        
+        randomR5 = randomR;
+        randomG5 = randomG + 240;
+        randomB5 = randomB;
+        
+      } 
+      
+      else if (randomBright <=4) {
+        randomR = (int)random(256);                  
+        randomG = 0;
+        randomB = (int)random(20, 60);
+        
+        randomR2 = randomR;
+        randomG2 = randomG;
+        randomB2 = randomB + 60;
+        
+        randomR3 = randomR;
+        randomG3 = randomG;
+        randomB3 = randomB + 120;
+        
+        randomR4 = randomR;
+        randomG4 = randomG;
+        randomB4 = randomB + 180;
+        
+        randomR5 = randomR;
+        randomG5 = randomG;
+        randomB5 = randomB + 240;
+        
+      } 
+      
+      else if (randomBright <=6) {
+        randomR = (int)random(190, 230);                
+        randomG = (int)random(256);                     
+        randomB = 0;
+        
+        randomR2 = randomR - 60;                       
+        randomG2 = randomG;
+        randomB2 = randomB;
+        
+        randomR3 = randomR - 120;
+        randomG3 = randomG;
+        randomB3 = randomB;
+        
+        randomR4 = randomR - 180;
+        randomG4 = randomG;
+        randomB4 = randomB;
+        
+        randomR5 = randomR - 240;
+        randomG5 = randomG;
+        randomB5 = randomB;
+        
+      }  
+    }
+  }
